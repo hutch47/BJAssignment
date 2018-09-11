@@ -8,7 +8,6 @@ public class arithmeticSolverTest extends TestCase {
 		
 		assertEquals(4.0, solver.add(2, 2));
 	}
-	
 	public void testSubtract() {
 		ArithmeticSolver solver = new ArithmeticSolver();
 		
