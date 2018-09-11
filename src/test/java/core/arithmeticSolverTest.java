@@ -2,13 +2,7 @@ package core;
 
 import junit.framework.TestCase;
 
-/*
- * Test comment for git
- * 
- * */
-
 public class arithmeticSolverTest extends TestCase {
-	
 	public void testAdd() {
 		ArithmeticSolver solver = new ArithmeticSolver();
 		
