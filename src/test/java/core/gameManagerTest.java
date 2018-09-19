@@ -61,4 +61,11 @@ public class gameManagerTest extends TestCase {
 		GM.dealerHit("C7");
 		assertEquals(false, GM.dealerWin(GM.player, GM.dealer));
 	}
+	public void testPlayerBust() {
+		GameManager GM = new GameManager();
+		GM.playerDeal("DJ", "DQ");
+		GM.dealerDeal("HJ", "D5");
+		GM.playerHit("HQ");
+		assertEquals(true, GM.dealerWin(GM.player, GM.dealer));
+	}
 }
