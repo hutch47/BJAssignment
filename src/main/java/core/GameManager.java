@@ -77,6 +77,9 @@ public class GameManager {
 			if (c1.getHandValue() == 21) {
 				return true;
 			}
+			if (c2.getHandValue() > 21) {
+				return true;
+			}
 			if (c1.getHandValue() > 21) {
 				return false;
 			}
@@ -84,6 +87,9 @@ public class GameManager {
 		}
 		else {
 			if (c2.getHandValue() == 21) {
+				return true;
+			}
+			if (c1.getHandValue() > 21) {
 				return true;
 			}
 			if (c2.getHandValue() > 21) {
