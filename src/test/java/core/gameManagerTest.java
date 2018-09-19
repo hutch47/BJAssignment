@@ -16,12 +16,19 @@ public class gameManagerTest extends TestCase {
 		GameManager GM = new GameManager();
 		// Test if player hits successfully
 		GM.playerHit(9);
-		assertEquals(9, GM.playerHandValue);
+		assertEquals(9, GM.getPlayerHandValue());
 	}
 	public void testPlayerHitRepeat() {
 		GameManager GM = new GameManager();
 		GM.playerHit(9);
 		GM.playerHit(8);
-		assertEquals(17, GM.playerHandValue);
+		assertEquals(17, GM.getPlayerHandValue());
+	}
+	public void testPlayerTwoAce() {
+		GameManager GM = new GameManager();
+		GM.playerHit(GM.A);
+		GM.playerHit(GM.A);
+		GM.playerHit(10);
+		assertEquals(17, GM.getPlayerHandValue());
 	}
 }
