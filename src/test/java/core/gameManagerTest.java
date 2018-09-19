@@ -6,11 +6,11 @@ public class gameManagerTest extends TestCase {
 	public void testEnum() {
 		GameManager GM = new GameManager();
 		// Test Jack
-		assertEquals(10, GM.J);
+		assertEquals(10, Royal.J.getValue());
 		// Test Queen
-		assertEquals(10, GM.Q);
+		assertEquals(10, Royal.Q.getValue());
 		// Test King
-		assertEquals(10, GM.K);
+		assertEquals(10, Royal.K.getValue());
 	}
 	public void testPlayerHit() {
 		GameManager GM = new GameManager();
