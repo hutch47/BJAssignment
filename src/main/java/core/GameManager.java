@@ -77,11 +77,17 @@ public class GameManager {
 			if (c1.getHandValue() == 21) {
 				return true;
 			}
+			if (c1.getHandValue() > 21) {
+				return false;
+			}
 			return (c1.getHandValue() > c2.getHandValue());
 		}
 		else {
 			if (c2.getHandValue() == 21) {
 				return true;
+			}
+			if (c2.getHandValue() > 21) {
+				return false;
 			}
 			return (c2.getHandValue() > c1.getHandValue());
 		}
