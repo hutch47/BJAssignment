@@ -19,7 +19,7 @@ public class GameManager {
 		// Initialize variables 
 		deck = new ArrayList<>();
 		player = new CardHolder();
-		dealer = new CardHolder();
+		dealer = new CardHolder(true);
 		rand = new Random();
 		
 		// Read in the deck from file
@@ -51,11 +51,12 @@ public class GameManager {
 	}
 	
 	public int dealerHit(String c) {
-		return player.addCard(c);
+		return dealer.addCard(c);
 	}
 	
 	public int playerDeal() {
-		return playerHit() + playerHit();
+		playerHit();
+		return playerHit();
 	}
 	
 	public int playerDeal(String c1, String c2) {
@@ -63,12 +64,31 @@ public class GameManager {
 	}
 	
 	public int dealerDeal() {
-		return dealerHit() + dealerHit();
+		dealerHit();
+		return dealerHit();
 	}
 	
 	public int dealerDeal(String c1, String c2) {
 		return dealerHit(c1) + dealerHit(c2);
 	}
 	
+	public boolean dealerWin(CardHolder c1, CardHolder c2) {
+		if (c1.getDealer()) {
+			if (c1.getHandValue() == 21) {
+				return true;
+			}
+			return (c1.getHandValue() > c2.getHandValue());
+		}
+		else {
+			if (c2.getHandValue() == 21) {
+				return true;
+			}
+			return (c2.getHandValue() > c1.getHandValue());
+		}
+		
+	}
+	
 	public int getPlayerHandValue() { return player.getHandValue(); }
+	public int getDealerHandValue() { return dealer.getHandValue(); }
+
 }

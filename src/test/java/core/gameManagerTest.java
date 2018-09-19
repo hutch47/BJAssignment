@@ -44,16 +44,14 @@ public class gameManagerTest extends TestCase {
 	}
 	public void testDealerWinBlackJack() {
 		GameManager GM = new GameManager();
-		int p, d;
-		p = GM.playerDeal("DJ", "DQ");
-		d = GM.dealerDeal("HJ", "DA");
-		assertEquals(-1, p - d);
+		GM.playerDeal("DJ", "HQ");
+		GM.dealerDeal("HJ", "DA");
+		assertEquals(true, GM.dealerWin(GM.player,  GM.dealer));
 	}
 	public void testPlayerWinBlackjack() {
 		GameManager GM = new GameManager();
-		int p, d;
-		p = GM.playerDeal("DJ", "DA");
-		d = GM.dealerDeal("HJ", "DQ");
-		assertEquals(1, p - d);
+		GM.playerDeal("DJ", "DA");
+		GM.dealerDeal("HJ", "DQ");
+		assertEquals(false, GM.dealerWin(GM.player, GM.dealer));
 	}
 }
