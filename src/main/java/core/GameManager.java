@@ -38,35 +38,37 @@ public class GameManager {
 	}
 	
 	public int playerHit() {
-		player.addCard(deck.remove(rand.nextInt(deck.size())));
+		return player.addCard(deck.remove(rand.nextInt(deck.size())));
 		
 	}
 	
 	public int playerHit(String c) {
-		
+		return player.addCard(c);
 	}
 	
 	public int dealerHit() {
-		
+		return dealer.addCard(deck.remove(rand.nextInt(deck.size() + 1)));
 	}
 	
 	public int dealerHit(String c) {
-		
+		return player.addCard(c);
 	}
 	
 	public int playerDeal() {
-		
+		return playerHit() + playerHit();
 	}
 	
 	public int playerDeal(String c1, String c2) {
-		
+		return playerHit(c1) + playerHit(c2);
 	}
 	
 	public int dealerDeal() {
-		
+		return dealerHit() + dealerHit();
 	}
 	
 	public int dealerDeal(String c1, String c2) {
-		
+		return dealerHit(c1) + dealerHit(c2);
 	}
+	
+	public int getPlayerHandValue() { return player.getHandValue(); }
 }

@@ -2,34 +2,28 @@ package core;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
-
-import core.GameManager.Royalty;
+import core.Royal;
 
 public class CardHolder {
 	private List<String> cards = new ArrayList<>();
 	private int handValue;
-	private boolean isAce;
+	private int aces;
 	CardHolder() {
 		handValue = 0;
+		aces = 0;
 	}
 	public int addCard(String c) {
 		cards.add(c);
-		Scanner scanner = new Scanner(c);
-		while (scanner.hasNext()) {
-			// Extract the value of the card into handValue
-			if (scanner.hasNextInt()) {
-				handValue += scanner.nextInt();
-			}
-			// If the card is an Ace, do special things
-			else if (scanner.next() == "A") {
-				isAce = true;
-				handValue += 11;
-			}
-			else {
-				handValue += Royalty.valueOf(scanner.next()).getCode();
-			}
+		if (c.contains("A")) {
+			aces++;
+			handValue += 11;
 		}
+		else if (c.replaceAll("[^0-9]", "").isEmpty()) {
+			handValue += Royal.valueOf(c.substring(1,2)).getValue();
+		}
+		else
+			handValue += Integer.parseInt(c.replaceAll("[^0-9]", ""));
+		
 		// If blackjack
 		if (handValue == 21) {
 			return 1;
@@ -39,8 +33,11 @@ public class CardHolder {
 			return 0;
 		}
 		// If bust
-		else if (handValue > 21) {
-			if ()
+		else {
+			if (aces > 0) {
+				handValue -= aces*10;
+				aces = 0;
+			}
 			return -1;
 		}
 		
@@ -48,4 +45,5 @@ public class CardHolder {
 	public String getCard(int i) {
 		return cards.get(i);
 	}
+	public int getHandValue() { return handValue; }
 }
