@@ -55,4 +55,8 @@ public class CardHolder {
 	public boolean getDealer() { return isDealer; }
 	
 	public int getHandValue() { return handValue; }
+	
+	public int getNumCards() { return cards.size(); }
+	
+	public boolean hasAces() { return aces > 0; }
 }

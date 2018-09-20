@@ -46,32 +46,32 @@ public class gameManagerTest extends TestCase {
 		GameManager GM = new GameManager();
 		GM.playerDeal("DJ", "HQ");
 		GM.dealerDeal("HJ", "DA");
-		assertEquals(true, GM.dealerWin(GM.player,  GM.dealer));
+		assertEquals(true, GM.dealerWin());
 	}
 	public void testPlayerWinBlackjack() {
 		GameManager GM = new GameManager();
 		GM.playerDeal("DJ", "DA");
 		GM.dealerDeal("HJ", "DQ");
-		assertEquals(false, GM.dealerWin(GM.player, GM.dealer));
+		assertEquals(false, GM.dealerWin());
 	}
 	public void testDealerBust() {
 		GameManager GM = new GameManager();
 		GM.playerDeal("DJ", "DQ");
 		GM.dealerDeal("HJ", "D5");
 		GM.dealerHit("C7");
-		assertEquals(false, GM.dealerWin(GM.player, GM.dealer));
+		assertEquals(false, GM.dealerWin());
 	}
 	public void testPlayerBust() {
 		GameManager GM = new GameManager();
 		GM.playerDeal("DJ", "DQ");
 		GM.dealerDeal("HJ", "D5");
 		GM.playerHit("HQ");
-		assertEquals(true, GM.dealerWin(GM.player, GM.dealer));
+		assertEquals(true, GM.dealerWin());
 	}
 	public void testDraw() {
 		GameManager GM = new GameManager();
 		GM.playerDeal("DJ", "DQ");
 		GM.dealerDeal("HJ", "SQ");
-		assertEquals(true, GM.dealerWin(GM.player, GM.dealer));
+		assertEquals(true, GM.dealerWin());
 	}
 }
